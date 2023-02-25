@@ -11,7 +11,7 @@ let
     correct = 0,
     wrong = 0,
     minutes = 4,
-    seconds = 11,
+    seconds = 60,
     answersFunction,
     timerInterval;
 
