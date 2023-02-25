@@ -1,0 +1,138 @@
+/* General Changes START */
+
+/* variables */
+:root {
+    --color-1: #CACACA;
+    --color-2: #EDEDED;
+    --color-3: #4A4A4A;
+    --color-4: #333333;
+    --color-5: #232323;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-5);
+    
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: var(--color-1);
+    border-radius: 10px;
+    padding: 40px;
+    min-height: 500px;
+}
+
+.hide {
+    display: none;
+}
+
+/* General Changes END */
+
+/* whole question box START */
+.whole-question-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* whole question box END */
+
+/* nav START */
+nav {
+    display: flex !important;
+    flex-direction: row;
+    gap: 10px;
+    width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-4);
+    font-weight: bold;
+    
+}
+
+nav>div {
+    background-color: var(--color-2);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+/* nav END */
+
+/* start button */
+#start-div {
+    background-color: var(--color-1);
+    padding: 20px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .1s all linear;
+}
+
+#start-div:hover {
+    background-color: var(--color-4);
+    color: var(--color-1);
+}
+
+#start-div:active {
+    background-color: var(--color-5);
+}
+
+/* answer box START */
+
+/* whole answer box */
+.whole-answer-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 50px;
+}
+
+/* each answer box */
+.each-answer-box {
+    cursor: pointer;
+    transition: .2s linear;
+    background-color: var(--color-2);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.each-answer-box:hover {
+    background-color: var(--color-3);
+}
+
+.each-answer-box:active {
+    background-color: var(--color-4);
+    transform: scale(.9);
+}
+
+/* answer box END */
+
+/* end screen */
+.end-screen {
+    background-color: var(--color-3);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-2);
+    font-size: 20px;
+    font-weight: bold;
+    gap: 10px;
+    text-align: center;
+}
+.end-screen>span{
+    padding: 10px;
+}
+.end-screen>span:nth-child(2){
+    background-color: green;
+}
+.end-screen>span:nth-child(3){
+    background-color: red;
+}
