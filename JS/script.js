@@ -11,7 +11,7 @@ let
     correct = 0,
     wrong = 0,
     minutes = 4,
-    seconds = 60,
+    seconds = 11,
     answersFunction,
     timerInterval;
 
@@ -23,7 +23,9 @@ let
 // 2: timer box
 // creates container
 bodyEl.innerHTML = `
-    <div id="start-div">start</div>
+    <div id="start-div">
+    <span>start</span>
+    </div>
     <nav> 
     <div class="current-question hide"> 1/12</div>
     <div class="timer-box hide">
@@ -304,10 +306,15 @@ function correctAnswersPath(correct, questionNumber) {
 }
 
 // * TITLE: timer
+// calls addZeroMinutes and addZeroToSeconds
+// Interval will be set after clicking start button
+// decreases seconds by 1 
+// if seconds are 0 they will be set to 60 and minutes will be decreased by 1
+// if minutes are 0 the interval for this function will be cleared
 function timer() {
     seconds--
-    addZeroToOneDigit(minutes)
-    addZeroToOneDigit(seconds)
+    addZeroMinutes()
+    addZeroToSeconds()
     secondsEl.innerHTML = seconds
     minutesEl.innerHTML = minutes
     if (seconds == 0) {
@@ -322,27 +329,15 @@ function timer() {
         }
     }
 }
-
-function addZeroToOneDigit(element) {
-    if (element == 9) {
-        element = "09"
-    } else if (element == 8) {
-        element = "08"
-    } else if (element == 7) {
-        element = "07"
-    } else if (element == 6) {
-        element = "06"
-    } else if (element == 5) {
-        element = "05"
-    } else if (element == 4) {
-        element = "04"
-    } else if (element == 3) {
-        element = "03"
-    } else if (element == 2) {
-        element = "02"
-    } else if (element == 1) {
-        element = "01"
-    } else if (element == 0) {
-        element = "00"
+// * TITLE: adds zero to minutes
+function addZeroMinutes() {
+    if (minutes < 10) {
+        minutes = ('0' + minutes).slice(-2)
+    } 
+}
+// * TITLE: adds zero to seconds
+function addZeroToSeconds(){
+    if (seconds < 10){
+        seconds = ('0' + seconds).slice(-2)
     }
 }

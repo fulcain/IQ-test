@@ -82,6 +82,10 @@ nav>div {
 #start-div:active {
     background-color: var(--color-5);
 }
+#start-div input{
+    border: none;
+    outline: none;
+}
 
 /* answer box START */
 
