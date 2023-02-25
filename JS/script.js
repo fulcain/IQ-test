@@ -10,7 +10,7 @@ let
     currentQuestion = 0,
     correct = 0,
     wrong = 0,
-    minutes = 1,
+    minutes = 4,
     seconds = 60,
     answersFunction,
     timerInterval;
@@ -196,6 +196,7 @@ function endScreen() {
         <span>correct answers: ${correct}</span>
         <span>wrong answers: ${wrong}</span>
         <span id="final-result"></span>
+        <button onclick="location.reload()">take a new test</button>
     </div>
     `
     finalResultEl = document.querySelector('#final-result')
@@ -310,7 +311,7 @@ function timer() {
     secondsEl.innerHTML = seconds
     minutesEl.innerHTML = minutes
     if (seconds == 0) {
-        seconds = 59
+        seconds = 60
         minutes--
         if (minutes == -1) {
             minutes = 0
