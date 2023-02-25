@@ -192,6 +192,7 @@ function changeDisplay(el) {
 
 // * TITLE: end screen
 function endScreen() {
+    clearInterval(timerInterval)
     bodyEl.innerHTML = `
     <div class="end-screen">
         <span>the test is over!</span>
