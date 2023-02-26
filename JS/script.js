@@ -12,7 +12,7 @@ let
     wrong = 0,
     minutes = 4,
     seconds = 60,
-    answersFunction,
+    answersFunction ="",
     timerInterval;
 
 // -----------
@@ -68,14 +68,21 @@ startBtn.addEventListener("click", () => {
 
 // * TITLE: question box 
 // creates question box
-// if current questions are 1 to 13 it calls the answer1to13Box function and puts in answer box
-// if current questions are 13 to 30 it calls the answer13to30Box function and puts in answer box
+// sets answersFunction variable to empty so the previous answers are not printed
+// if current question is less than 13 calls the answerFunctionTemplate 6 times and puts it in answersFunction
+// if current question is more than 13 calls the answerFunctionTemplate 8 times and puts it in answersFunction
+// calls currentQuestionFunction() to update the current question
 // reloads added items
 function questionBox() {
+    answersFunction = ""
     if (currentQuestion < 13) {
-        answersFunction = answer1to13()
+        for (let i =1;i < 7; i++){
+            answersFunction += answerFunctionTemplate(i)
+        }
     } else {
-        answersFunction = answer13to30()
+        for (let i =1;i < 9; i++){
+            answersFunction += answerFunctionTemplate(i)
+        }
     }
     currentQuestionFunction()
     container.innerHTML = `
@@ -90,7 +97,7 @@ function questionBox() {
                 </div >
                 </div>
     `
-    correctAnswers()
+    // correctAnswers()
     // selectors
     eachAnswerBox = document.querySelectorAll('.each-answer-box')
     timerBox = document.querySelector('.timer-box')
@@ -99,60 +106,13 @@ function questionBox() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
 }
 
-// * TITLE: answers from 1 to 13
-function answer1to13() {
-    return `
-        <div div class="each-answer-box" >
-            <img src="Images/${currentQuestion}/${currentQuestion}-1.png">
-        </div>
-        <div class="each-answer-box">
-            <img src="Images/${currentQuestion}/${currentQuestion}-2.png">
-        </div>
-        <div class="each-answer-box">
-            <img src="Images/${currentQuestion}/${currentQuestion}-3.png">
-        </div>
-        <div class="each-answer-box">
-            <img src="Images/${currentQuestion}/${currentQuestion}-4.png">
-        </div>
-        <div class="each-answer-box">
-            <img src="Images/${currentQuestion}/${currentQuestion}-5.png">
-        </div>
-        <div class="each-answer-box">
-            <img src="Images/${currentQuestion}/${currentQuestion}-6.png">
-        </div>
-        `
-}
-
-
-// * TITLE: answers from 13 to 30
-function answer13to30() {
+// * TITLE: answers function
+function answerFunctionTemplate(number){
     return `
     <div div class="each-answer-box" >
-        <img src="Images/${currentQuestion}/${currentQuestion}-1.png">
-    </div>
-    <div class="each-answer-box">
-        <img src="Images/${currentQuestion}/${currentQuestion}-2.png">
-    </div>
-    <div class="each-answer-box">
-        <img src="Images/${currentQuestion}/${currentQuestion}-3.png">
-    </div>
-    <div class="each-answer-box">
-        <img src="Images/${currentQuestion}/${currentQuestion}-4.png">
-    </div>
-    <div class="each-answer-box">
-        <img src="Images/${currentQuestion}/${currentQuestion}-5.png">
-    </div>
-    <div class="each-answer-box">
-        <img src="Images/${currentQuestion}/${currentQuestion}-6.png">
-    </div>
-    <div class="each-answer-box">
-        <img src="Images/${currentQuestion}/${currentQuestion}-7.png">
-    </div>
-    <div class="each-answer-box">
-        <img src="Images/${currentQuestion}/${currentQuestion}-8.png">
+        <img src="Images/${currentQuestion}/${currentQuestion}-${number}.png">
     </div>
     `
-
 }
 
 // * TITLE: answer function
