@@ -10,7 +10,7 @@ let
     currentQuestion = 0,
     correct = 0,
     wrong = 0,
-    minutes = 4,
+    minutes = 14,
     seconds = 60,
     answersFunction = "",
     timerInterval;
@@ -27,7 +27,7 @@ bodyEl.innerHTML = `
     <span>start</span>
     </div>
     <nav> 
-    <div class="current-question hide"> 1/12</div>
+    <div class="current-question hide"></div>
     <div class="timer-box hide">
         <span id="minutes"></span>
         <span>:</span>
@@ -99,7 +99,7 @@ function questionBox() {
                 </div >
                 </div>
     `
-    // correctAnswers()
+    correctAnswers()
     // selectors
     eachAnswerBox = document.querySelectorAll('.each-answer-box')
     timerBox = document.querySelector('.timer-box')
