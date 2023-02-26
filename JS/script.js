@@ -12,7 +12,7 @@ let
     wrong = 0,
     minutes = 4,
     seconds = 60,
-    answersFunction ="",
+    answersFunction = "",
     timerInterval;
 
 // -----------
@@ -75,15 +75,17 @@ startBtn.addEventListener("click", () => {
 // reloads added items
 function questionBox() {
     answersFunction = ""
+    // answers function
     if (currentQuestion < 13) {
-        for (let i =1;i < 7; i++){
+        for (let i = 1; i < 7; i++) {
             answersFunction += answerFunctionTemplate(i)
         }
     } else {
-        for (let i =1;i < 9; i++){
+        for (let i = 1; i < 9; i++) {
             answersFunction += answerFunctionTemplate(i)
         }
     }
+
     currentQuestionFunction()
     container.innerHTML = `
             <div class="whole-question-box">
@@ -107,7 +109,7 @@ function questionBox() {
 }
 
 // * TITLE: answers function
-function answerFunctionTemplate(number){
+function answerFunctionTemplate(number) {
     return `
     <div div class="each-answer-box" >
         <img src="Images/${currentQuestion}/${currentQuestion}-${number}.png">
@@ -143,6 +145,7 @@ function answerFunction() {
         endScreen()
     }
 }
+
 // * TITLE: changeDisplay
 // parameters: 
 // el: element
@@ -294,11 +297,11 @@ function timer() {
 function addZeroMinutes() {
     if (minutes < 10) {
         minutes = ('0' + minutes).slice(-2)
-    } 
+    }
 }
 // * TITLE: adds zero to seconds
-function addZeroToSeconds(){
-    if (seconds < 10){
+function addZeroToSeconds() {
+    if (seconds < 10) {
         seconds = ('0' + seconds).slice(-2)
     }
 }

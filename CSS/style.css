@@ -2,11 +2,14 @@
 
 /* variables */
 :root {
-    --color-1: #CACACA;
-    --color-2: #EDEDED;
-    --color-3: #4A4A4A;
-    --color-4: #333333;
-    --color-5: #232323;
+    --primary-color:#1a1d27;
+    --secondary-color:#30ccff;
+    --color-1:#19B1E2;
+    --text-color:#cfcccc;
+}
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
@@ -15,14 +18,14 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background-color: var(--color-5);
-    
+    background-color: var(--primary-color);
+
 }
 
 .container {
     width: 1000px;
     margin: 0 auto;
-    background-color: var(--color-1);
+    background-color: var(--secondary-color);
     border-radius: 10px;
     padding: 40px;
     min-height: 500px;
@@ -51,13 +54,14 @@ nav {
     width: 500px;
     justify-content: space-between;
     align-items: center;
-    color: var(--color-4);
+    color: var(--text-color);
     font-weight: bold;
-    
+
 }
 
 nav>div {
-    background-color: var(--color-2);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 50px;
@@ -67,7 +71,8 @@ nav>div {
 
 /* start button */
 #start-div {
-    background-color: var(--color-1);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     padding: 20px 50px;
     border-radius: 10px;
     cursor: pointer;
@@ -75,14 +80,10 @@ nav>div {
 }
 
 #start-div:hover {
-    background-color: var(--color-4);
-    color: var(--color-1);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 }
-
-#start-div:active {
-    background-color: var(--color-5);
-}
-#start-div input{
+#start-div input {
     border: none;
     outline: none;
 }
@@ -102,17 +103,16 @@ nav>div {
 .each-answer-box {
     cursor: pointer;
     transition: .2s linear;
-    background-color: var(--color-2);
+    background-color: var(--color-1);
     border-radius: 10px;
     padding: 5px;
 }
 
 .each-answer-box:hover {
-    background-color: var(--color-3);
+    background-color: var(--secondary-color);
 }
 
 .each-answer-box:active {
-    background-color: var(--color-4);
     transform: scale(.9);
 }
 
@@ -120,37 +120,47 @@ nav>div {
 
 /* end screen */
 .end-screen {
-    background-color: var(--color-3);
+    background-color: var(--secondary-color);
     padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: var(--color-2);
+    color: var(--primary-color);
     font-size: 20px;
     font-weight: bold;
     gap: 10px;
     text-align: center;
+    border-radius: 10px;
 }
-.end-screen>span{
-    padding: 10px;
+
+.end-screen * {
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: bold;
 }
-.end-screen>span:nth-child(2){
+
+.end-screen>span:nth-child(2) {
     background-color: green;
 }
-.end-screen>span:nth-child(3){
+
+.end-screen>span:nth-child(3) {
     background-color: red;
 }
-.end-screen button{
-    padding: 10px;
-    background-color: var(--color-2);
+
+.end-screen button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: .1s linear;
 }
-.end-screen button:hover{
-    background-color: var(--color-4);
+
+.end-screen button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
-.end-screen button:active{
-    background-color: var(--color-5);
+
+.end-screen button:active {
+    transform: scale(.9);
 }
