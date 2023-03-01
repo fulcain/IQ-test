@@ -47,10 +47,11 @@ let
 // -----------
 
 // events
-// * start button
+// start button
 // calls changeDisplay function to hide the button
-// calls question box to create the first question
+// calls questionBox function to create the first question
 // calls timer function
+// sets an Interval for timer function and stores it in timerInterval variable
 // calls answer function
 startBtn.addEventListener("click", () => {
     currentQuestion++
@@ -60,19 +61,21 @@ startBtn.addEventListener("click", () => {
     changeDisplay(currentQuestionEl)
     questionBox()
     timer()
-    answerFunction()
     timerInterval = setInterval(timer, 1000)
+    answerFunction()
 })
 // functions
 
 
-// * TITLE: question box 
-// creates question box
+// TITLE: question box 
 // sets answersFunction variable to empty so the previous answers are not printed
 // if current question is less than 13 calls the answerFunctionTemplate 6 times and puts it in answersFunction
 // if current question is more than 13 calls the answerFunctionTemplate 8 times and puts it in answersFunction
-// calls currentQuestionFunction() to update the current question
+// calls currentQuestionFunction() to update the current question number
+// creates question box
+// calls correctAnswers function to give correct class name to correct answers
 // reloads added items
+// if currentQuestion is more than 12 (13 to 30) the question box min-height will change to 600px
 function questionBox() {
     answersFunction = ""
     // answers function
@@ -108,14 +111,14 @@ function questionBox() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
 
     // changes the style if answers are 2 columns
-    if (currentQuestion > 12){
-        wholeQuestionBox.forEach(item =>{
+    if (currentQuestion > 12) {
+        wholeQuestionBox.forEach(item => {
             item.style.minHeight = "600px"
         })
     }
 }
 
-// * TITLE: answers function
+// TITLE: answers function
 function answerFunctionTemplate(number) {
     return `
     <div div class="each-answer-box" >
@@ -124,7 +127,15 @@ function answerFunctionTemplate(number) {
     `
 }
 
-// * TITLE: answer function
+// TITLE: current question
+// changes the currentQuestionEL innerHTML after called
+function currentQuestionFunction() {
+    if (currentQuestion < 31) {
+        currentQuestionEl.innerHTML = `${currentQuestion}/30`
+    }
+}
+
+// TITLE: answer function
 // after clicking each button it removes that question
 // adds 1 to currentQuestion variable
 // calls the questionBox function to create a new question
@@ -153,14 +164,18 @@ function answerFunction() {
     }
 }
 
-// * TITLE: changeDisplay
+// TITLE: changeDisplay
 // parameters: 
 // el: element
 function changeDisplay(el) {
     el.classList.toggle('hide')
 }
 
-// * TITLE: end screen
+// TITLE: end screen
+// clears the Interval of timerInterval variable
+// creates end screen inside of the body
+// reloads added items
+// calls IQStatus to calculate the user answers
 function endScreen() {
     clearInterval(timerInterval)
     bodyEl.innerHTML = `
@@ -176,7 +191,8 @@ function endScreen() {
     IQStatus()
 }
 
-// * TITLE: IQStatus
+// TITLE: IQStatus
+// changes finalResultEl innerHTML according to user results of the test
 function IQStatus() {
     if (correct > 25) {
         finalResultEl.innerHTML = "your IQ is super high"
@@ -192,16 +208,10 @@ function IQStatus() {
         finalResultEl.innerHTML = "your IQ is below average"
     }
 }
-// * TITLE: current question
-function currentQuestionFunction() {
-    if (currentQuestion < 31) {
-        currentQuestionEl.innerHTML = `${currentQuestion}/30`
-    }
-}
 
-// * TITLE: correctAnswers
+// TITLE: correctAnswers
 // gives correct answers "correct" class
-// class correctAnswersPath
+// calls correctAnswersPath function
 function correctAnswers() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
 
@@ -267,21 +277,24 @@ function correctAnswers() {
     correctAnswersPath(7, 30)
 }
 
-// * TITLE: correctAnswersPath
+// TITLE: correctAnswersPath
 // parameter:
 // correct: number of child element which is correct
+// questionNumber: the question number
 function correctAnswersPath(correct, questionNumber) {
     if (currentQuestion == questionNumber) {
         wholeQuestionBox[0].children[1].children[correct].classList.add("correct")
     }
 }
 
-// * TITLE: timer
+// TITLE: timer
 // calls addZeroMinutes and addZeroToSeconds
 // Interval will be set after clicking start button
 // decreases seconds by 1 
 // if seconds are 0 they will be set to 60 and minutes will be decreased by 1
 // if minutes are 0 the interval for this function will be cleared
+// endScreen will be called after timer is 00:00
+
 function timer() {
     seconds--
     addZeroMinutes()
@@ -300,13 +313,14 @@ function timer() {
         }
     }
 }
-// * TITLE: adds zero to minutes
+// TITLE: adds zero to minutes
 function addZeroMinutes() {
     if (minutes < 10) {
         minutes = ('0' + minutes).slice(-2)
     }
 }
-// * TITLE: adds zero to seconds
+
+// TITLE: adds zero to seconds
 function addZeroToSeconds() {
     if (seconds < 10) {
         seconds = ('0' + seconds).slice(-2)
