@@ -8,6 +8,6 @@
 click on code and download zip
 
 how to open the app (if you can't use https://fulcain.github.io/IQ-test)
-1- open the index.html file
-2- book mark it for a quick access
+- open the index.html file
+- book mark it for a quick access
 - enjoy!
