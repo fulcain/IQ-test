@@ -5,9 +5,9 @@
 - you will get a result based on correct questions
 
 # Installation
-click on code and download zip
+- if you can't use https://fulcain.github.io/IQ-test
 
-how to open the app (if you can't use https://fulcain.github.io/IQ-test)
+- click on code and download zip
 - open the index.html file
 - book mark it for a quick access
 - enjoy!
