@@ -297,7 +297,7 @@ function correctAnswersPath(correct, questionNumber) {
 
 function timer() {
     seconds--
-    addZeroMinutes()
+    addZeroToMinutes()
     addZeroToSeconds()
     secondsEl.innerHTML = seconds
     minutesEl.innerHTML = minutes
@@ -314,7 +314,7 @@ function timer() {
     }
 }
 // TITLE: adds zero to minutes
-function addZeroMinutes() {
+function addZeroToMinutes() {
     if (minutes < 10) {
         minutes = ('0' + minutes).slice(-2)
     }
