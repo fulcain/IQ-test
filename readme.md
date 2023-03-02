@@ -1,4 +1,4 @@
-##Who does the app works:
+# how does the app works:
 
 - click start button to start the test 
 - you have 15 minutes to answer 30 questions 
