@@ -217,7 +217,7 @@ function endScreen() {
     notAnswered = 30 - (correct + wrong)
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
-        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید","rtl","fa")
+        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید","rtl","fa","،")
         finalResultEl = document.querySelector('#final-result')
         IQStatus()
     } else {
@@ -238,26 +238,26 @@ function endScreen() {
 // calls the function it self to do apply the event listerners
 function translate() {
     persian.addEventListener("click", () => {
-        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید","rtl","fa")
+        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید","rtl","fa","،")
         IQStatus()
         translate()
     })
     english.addEventListener("click", () => {
-        endTempltae("the test is over!", "correct answers", "wrong answers", "not answered", "score", "take a new test","ltr","en")
+        endTempltae("the test is over!", "correct answers", "wrong answers", "not answered", "score", "take a new test","ltr","en",",")
         IQStatus()
         translate()
     })
 }
 
 // TITLE: endScreen Template
-function endTempltae(testOver, correctText, wrongText, notAnsweredText, scoreText, newTest,direction,languge) {
+function endTempltae(testOver, correctText, wrongText, notAnsweredText, scoreText, newTest,direction,languge,comma) {
     bodyEl.innerHTML = `
     <div class="end-screen" lang=${languge} style="direction:${direction};">
     <div id="translate">
     <span id="english" class="end-screen-spans-hoverAble">EN</span>
     <span id="persian" class="end-screen-spans-hoverAble">FA</span>
     </div>
-    <span>${usersNameInput.value}, ${testOver}</span>
+    <span>${usersNameInput.value}${comma} ${testOver}</span>
     <span>${correctText} = ${correct}</span>
     <span>${wrongText} = ${wrong}</span>
     <span class="end-screen-spans">${notAnsweredText} = ${notAnswered}</span>

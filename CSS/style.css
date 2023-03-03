@@ -151,12 +151,14 @@ nav>div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     color: var(--primary-color);
     font-size: 20px;
     font-weight: bold;
     gap: 10px;
     text-align: center;
     border-radius: 10px;
+    width: 600px;
 }
 
 .end-screen * {
@@ -234,6 +236,7 @@ nav>div {
     .container {
         width: 850px;
     }
+
     .whole-question-box img {
         width: 300px;
     }
@@ -275,6 +278,14 @@ nav>div {
         height: 400px;
     }
 
+    .end-screen {
+        width: 450px;
+    }
+
+    .end-screen * {
+        width: 400px;
+    }
+
     .each-answer-box img {
         width: 70px;
     }
@@ -301,6 +312,14 @@ nav>div {
 
     nav {
         width: 200px;
+    }
+    
+    .end-screen {
+        width: 350px;
+    }
+
+    .end-screen * {
+        width: 300px;
     }
 
 }
