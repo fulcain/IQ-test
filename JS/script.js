@@ -258,10 +258,10 @@ function endTempltae(testOver, correctText, wrongText, notAnsweredText, scoreTex
     <span id="persian" class="end-screen-spans-hoverAble">FA</span>
     </div>
     <span>${usersNameInput.value}, ${testOver}</span>
-    <span>${correctText}: ${correct}</span>
-    <span>${wrongText}: ${wrong}</span>
-    <span class="end-screen-spans">${notAnsweredText}: ${notAnswered}</span>
-    <span class="end-screen-spans">${scoreText}: ${score}</span>
+    <span>${correctText} = ${correct}</span>
+    <span>${wrongText} = ${wrong}</span>
+    <span class="end-screen-spans">${notAnsweredText} = ${notAnswered}</span>
+    <span class="end-screen-spans">${scoreText} = ${score}</span>
         <span id="final-result"></span>
         <span onclick="location.reload()" class="end-screen-spans-hoverAble ">${newTest}</span>
         </div>
