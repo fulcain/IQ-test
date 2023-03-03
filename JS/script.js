@@ -30,7 +30,7 @@ document.head.appendChild(titleEl)
 // 2: timer box
 // creates container
 bodyEl.innerHTML = `
-<input type="text" id="users-name" placeholder="Your Name:">
+<input type="text" id="users-name" placeholder="Enter Your Name:">
     <button id="start-button" disabled>start</button>
     <nav> 
     <div class="current-question hide"></div>
@@ -206,6 +206,7 @@ function endScreen() {
         <span>${usersNameInput.value}, the test is over!</span>
         <span>correct answers: ${correct}</span>
         <span>wrong answers: ${wrong}</span>
+        <span>not answered: ${30 - (correct + wrong)}</span>
         <span id="final-result"></span>
         <button onclick="location.reload()">take a new test</button>
     </div>

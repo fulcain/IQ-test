@@ -76,8 +76,7 @@ nav>div {
     color: var(--primary-color);
     padding: 20px 50px;
     border-radius: 10px;
-    /* cursor: pointer; */
-    transition: .1s all linear;
+    transition: .2s all linear;
     width: 300px;
     text-align: center;
     outline: none;
@@ -106,6 +105,7 @@ nav>div {
 #users-name::placeholder{
     color: var(--primary-color);
 }
+
 
 
 /* answer box START */
@@ -161,14 +161,21 @@ nav>div {
     padding: 20px;
     border-radius: 10px;
     font-weight: bold;
+
 }
 
 .end-screen>span:nth-child(2) {
     background-color: green;
+    color: var(--text-color);
 }
 
 .end-screen>span:nth-child(3) {
     background-color: red;
+    color: var(--text-color);
+}
+.end-screen>span:nth-child(4) {
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .end-screen button {
