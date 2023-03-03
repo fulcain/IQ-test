@@ -1,4 +1,3 @@
-
 // variables 
 let
     bodyEl = document.body,
@@ -28,7 +27,7 @@ titleEl.setAttribute("rel", "icon")
 titleEl.setAttribute("href", "Images/icon.ico")
 document.head.appendChild(titleEl)
 
-// creates start div
+// creates start divB
 // creates nav -> 2 div in it:
 // 1: current question
 // 2: timer box
@@ -212,18 +211,18 @@ function endScreen() {
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
         bodyEl.innerHTML = `
-        <div class="end-screen">
+        <div class="end-screen" style="direction:rtl;" lang="fa">
             <div id="translate">
                 <span id="english" class="end-screen-spans-hoverAble">EN</span>
                 <span id="persian" class="end-screen-spans-hoverAble">FA</span>
             </div>
-            <span>${usersNameInput.value}, the test is over!</span>
-            <span>CORRECT ANSWERS: ${correct}</span>
-            <span>WRONG ANSWERS: ${wrong}</span>
-            <span class="end-screen-spans">NOT ANSWERED: ${notAnswered}</span>
-            <span class="end-screen-spans">SCORE : ${score}</span>
+            <span>${usersNameInput.value}، تست به پایان رسید</span>
+            <span>جواب های درست: ${correct}</span>
+            <span>جواب های غلط: ${wrong}</span>
+            <span class="end-screen-spans">پاسخ داده نشده: ${notAnswered}</span>
+            <span class="end-screen-spans">امتیاز: ${score}</span>
             <span id="final-result"></span>
-            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">take a new test</span>
+            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">تست جدید شروع کنید</span>
         </div>
         `
         finalResultEl = document.querySelector('#final-result')
@@ -239,68 +238,89 @@ function endScreen() {
 }
 
 // TITLE: translate
+// changes body inner HTML acoring to language
+// reassigns finalResultEl 
+// calls IQstatus 
+// reassiges english and persian element 
+// calls the function it self to do apply the event listerners
 function translate() {
     english.addEventListener("click", () => {
         bodyEl.innerHTML = `
-        <div class="end-screen">
-            <div id="translate">
-                <span id="english" class="end-screen-spans-hoverAble">EN</span>
-                <span id="persian" class="end-screen-spans-hoverAble">FA</span>
-            </div>
-            <span>${usersNameInput.value}, the test is over!</span>
-            <span>CORRECT ANSWERS: ${correct}</span>
-            <span>WRONG ANSWERS: ${wrong}</span>
-            <span class="end-screen-spans">NOT ANSWERED: ${notAnswered}</span>
-            <span class="end-screen-spans">SCORE : ${score}</span>
+        <div class="end-screen" lang="en">
+        <div id="translate">
+        <span id="english" class="end-screen-spans-hoverAble">EN</span>
+        <span id="persian" class="end-screen-spans-hoverAble">FA</span>
+        </div>
+        <span>${usersNameInput.value}, the test is over!</span>
+        <span>correct answers: ${correct}</span>
+        <span>wrong answers: ${wrong}</span>
+        <span class="end-screen-spans">not answered: ${notAnswered}</span>
+        <span class="end-screen-spans">score: ${score}</span>
             <span id="final-result"></span>
             <span onclick="location.reload()" class="end-screen-spans-hoverAble ">take a new test</span>
-        </div>
-        `
+            </div>
+            `
         finalResultEl = document.querySelector('#final-result')
         IQStatus()
+        english = document.querySelector('#english')
+        persian = document.querySelector('#persian')
+        translate()
     })
     persian.addEventListener("click", () => {
         bodyEl.innerHTML = `
-        <div class="end-screen">
+        <div class="end-screen" style="direction:rtl;" lang="fa">
             <div id="translate">
                 <span id="english" class="end-screen-spans-hoverAble">EN</span>
                 <span id="persian" class="end-screen-spans-hoverAble">FA</span>
             </div>
-            <span>${usersNameInput.value}, the test is over!</span>
-            <span>CORRECT ANSWERS: ${correct}</span>
-            <span>WRONG ANSWERS: ${wrong}</span>
-            <span class="end-screen-spans">NOT answer: ${notAnswered}</span>
-            <span class="end-screen-spans">SCORE : ${score}</span>
+            <span>${usersNameInput.value}، تست به پایان رسید</span>
+            <span>جواب های درست: ${correct}</span>
+            <span>جواب های غلط: ${wrong}</span>
+            <span class="end-screen-spans">پاسخ داده نشده: ${notAnswered}</span>
+            <span class="end-screen-spans">امتیاز: ${score}</span>
             <span id="final-result"></span>
-            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">take a new test</span>
+            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">تست جدید شروع کنید</span>
         </div>
         `
         finalResultEl = document.querySelector('#final-result')
         IQStatus()
+        english = document.querySelector('#english')
+        persian = document.querySelector('#persian')
+        translate()
     })
 }
 
 // TITLE: IQStatus
 
 // changes finalResultEl innerHTML according to user results of the test
+// calls checkLanguage function
 function IQStatus() {
     if (score >= 70 || score <= 79) {
-        finalResultEl.innerHTML = "your IQ is the lowest level (Cognitively impaired)"
-    }
-    else if (score >= 80 || score <= 89) {
-        finalResultEl.innerHTML = "your IQ is below average"
-    }
-    else if (score >= 90 || score <= 110) {
-        finalResultEl.innerHTML = "your IQ is average)"
-    }
-    else if (score >= 111 || score <= 120) {
-        finalResultEl.innerHTML = "your IQ is above average"
+        checkLanguage("your IQ is the lowest level (Cognitively impaired)", "en")
+        checkLanguage("ضریب هوشی شما پاییت ترین حالت ممکن است", "fa")
+    } else if (score >= 80 || score <= 89) {
+        checkLanguage("your IQ is below average", "en")
+        checkLanguage("ضریب هوشی شما زیر میانگین است", "fa")
+    } else if (score >= 90 || score <= 110) {
+        checkLanguage("your IQ is average", "en")
+        checkLanguage("ضریب هوشی شما میانگین است", "fa")
+    } else if (score >= 111 || score <= 120) {
+        checkLanguage("your IQ is above average", "en")
+        checkLanguage("ضریب هوشی شما بالاتر از میانگین است", "fa")
     } else if (score >= 121 || score <= 130) {
-        finalResultEl.innerHTML = "your IQ is high"
+        checkLanguage("your IQ is high", "en")
+        checkLanguage("ضریب هوشی شما بالا است", "fa")
     } else if (score > 130) {
         finalResultEl.innerHTML = "your IQ is SUPER high!"
+        checkLanguage("your IQ is SUPER high!", "en")
+        checkLanguage("ضریب هوشی شما بسیار بالا است", "fa")
     }
-
+    // TITLE: check language
+    function checkLanguage(message, language) {
+        if (finalResultEl.parentElement.getAttribute("lang") == language) {
+            finalResultEl.innerHTML = message
+        }
+    }
 }
 
 // TITLE: correctAnswers
