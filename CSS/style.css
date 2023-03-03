@@ -95,6 +95,7 @@ nav>div {
 .whole-answer-box {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 5px;
     margin-top: 50px;
@@ -173,7 +174,7 @@ nav>div {
 
 /* responsive */
 
-/* 1024px */
+/* 1440px */
 @media only screen and (max-width:1440px) {
     .container {
         width: 800px;
@@ -193,7 +194,7 @@ nav>div {
 @media only screen and (max-width:1024px) {
     .container {
         width: 800px;
-        height: 600px;
+        height: 500px;
     }
 
     .whole-question-box img {
@@ -201,7 +202,7 @@ nav>div {
     }
 
     .each-answer-box img {
-        width: 100px;
+        width: 90px;
     }
 }
 
@@ -216,8 +217,20 @@ nav>div {
         width: 300px;
     }
 
+    .whole-answer-box {
+        margin-top: 30px;
+    }
+
     .each-answer-box img {
-        width: 70px;
+        width: 85px;
+    }
+}
+
+
+/* 540px */
+@media only screen and (max-width:540px) {
+    .container {
+        width: 500px;
     }
 }
 
@@ -225,12 +238,16 @@ nav>div {
 @media only screen and (max-width:425px) {
     .container {
         width: 270px;
+        height: 400px;
     }
 
     .whole-question-box img {
         width: 180px;
     }
 
+    .whole-answer-box {
+        margin-top: 60px;
+    }
 
     .each-answer-box img {
         width: 50px;
