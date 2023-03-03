@@ -164,39 +164,41 @@ nav>div {
     padding: 20px;
     border-radius: 10px;
     font-weight: bold;
+    transition: .2s;
 
 }
 
-.end-screen>span:nth-child(2) {
+/* translate section */
+
+.end-screen>span:nth-child(3) {
     background-color: green;
     color: var(--text-color);
 }
 
-.end-screen>span:nth-child(3) {
+.end-screen>span:nth-child(4) {
     background-color: red;
     color: var(--text-color);
 }
 
-.end-screen>span:nth-child(4) {
+.end-screen-spans {
     background-color: var(--primary-color);
     color: var(--text-color);
 }
 
-.end-screen button {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    border-radius: 10px;
+
+/* hoverAble buttons*/
+.end-screen-spans-hoverAble {
     cursor: pointer;
-    transition: .1s linear;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
-.end-screen button:hover {
+.end-screen-spans-hoverAble:hover {
     background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 
-.end-screen button:active {
+.end-screen-spans-hoverAble:active {
     transform: scale(.9);
 }
 

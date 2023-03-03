@@ -14,6 +14,8 @@ let
     score = 0,
     minutes = 14,
     seconds = 60,
+    persian = "",
+    english = "",
     answersFunction = "",
     timerInterval;
 
@@ -203,6 +205,7 @@ function changeDisplay(el) {
 // reloads added items
 // calls IQStatus to calculate the user answers
 // if statement to prevent user from calling the function in Developer Console
+// calls translate function
 function endScreen() {
     score = (correct / 20) * 100
     notAnswered = 30 - (correct + wrong)
@@ -210,13 +213,17 @@ function endScreen() {
         clearInterval(timerInterval)
         bodyEl.innerHTML = `
         <div class="end-screen">
+            <div id="translate">
+                <span id="english" class="end-screen-spans-hoverAble">EN</span>
+                <span id="persian" class="end-screen-spans-hoverAble">FA</span>
+            </div>
             <span>${usersNameInput.value}, the test is over!</span>
             <span>CORRECT ANSWERS: ${correct}</span>
             <span>WRONG ANSWERS: ${wrong}</span>
-            <span>NOT ANSWERED: ${notAnswered}</span>
-            <span>SCORE : ${score}</span>
+            <span class="end-screen-spans">NOT ANSWERED: ${notAnswered}</span>
+            <span class="end-screen-spans">SCORE : ${score}</span>
             <span id="final-result"></span>
-            <button onclick="location.reload()">take a new test</button>
+            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">take a new test</span>
         </div>
         `
         finalResultEl = document.querySelector('#final-result')
@@ -224,6 +231,53 @@ function endScreen() {
     } else {
         alert("please enter a name")
     }
+
+    // selectors 
+    english = document.querySelector('#english')
+    persian = document.querySelector('#persian')
+    translate()
+}
+
+// TITLE: translate
+function translate() {
+    english.addEventListener("click", () => {
+        bodyEl.innerHTML = `
+        <div class="end-screen">
+            <div id="translate">
+                <span id="english" class="end-screen-spans-hoverAble">EN</span>
+                <span id="persian" class="end-screen-spans-hoverAble">FA</span>
+            </div>
+            <span>${usersNameInput.value}, the test is over!</span>
+            <span>CORRECT ANSWERS: ${correct}</span>
+            <span>WRONG ANSWERS: ${wrong}</span>
+            <span class="end-screen-spans">NOT ANSWERED: ${notAnswered}</span>
+            <span class="end-screen-spans">SCORE : ${score}</span>
+            <span id="final-result"></span>
+            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">take a new test</span>
+        </div>
+        `
+        finalResultEl = document.querySelector('#final-result')
+        IQStatus()
+    })
+    persian.addEventListener("click", () => {
+        bodyEl.innerHTML = `
+        <div class="end-screen">
+            <div id="translate">
+                <span id="english" class="end-screen-spans-hoverAble">EN</span>
+                <span id="persian" class="end-screen-spans-hoverAble">FA</span>
+            </div>
+            <span>${usersNameInput.value}, the test is over!</span>
+            <span>CORRECT ANSWERS: ${correct}</span>
+            <span>WRONG ANSWERS: ${wrong}</span>
+            <span class="end-screen-spans">NOT answer: ${notAnswered}</span>
+            <span class="end-screen-spans">SCORE : ${score}</span>
+            <span id="final-result"></span>
+            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">take a new test</span>
+        </div>
+        `
+        finalResultEl = document.querySelector('#final-result')
+        IQStatus()
+    })
 }
 
 // TITLE: IQStatus
@@ -243,7 +297,7 @@ function IQStatus() {
         finalResultEl.innerHTML = "your IQ is above average"
     } else if (score >= 121 || score <= 130) {
         finalResultEl.innerHTML = "your IQ is high"
-    } else if (score > 130){
+    } else if (score > 130) {
         finalResultEl.innerHTML = "your IQ is SUPER high!"
     }
 
