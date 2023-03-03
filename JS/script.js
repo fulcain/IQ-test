@@ -213,7 +213,7 @@ function changeDisplay(el) {
 // if statement to prevent user from calling the function in Developer Console
 // calls translate function
 function endScreen() {
-    score = (correct / 20) * 100
+    score = Math.floor((correct / 19) * 100)
     notAnswered = 30 - (correct + wrong)
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
@@ -276,19 +276,19 @@ function endTempltae(testOver, correctText, wrongText, notAnsweredText, scoreTex
 // changes finalResultEl innerHTML according to user results of the test
 // calls checkLanguage function
 function IQStatus() {
-    if (score >= 70 || score <= 79) {
+    if (score >= 70 && score <= 79) {
         checkLanguage("your IQ is the lowest level (Cognitively impaired)", "en")
         checkLanguage("ضریب هوشی شما پاییت ترین حالت ممکن است", "fa")
-    } else if (score >= 80 || score <= 89) {
+    } else if (score >= 80 && score <= 89) {
         checkLanguage("your IQ is below average", "en")
         checkLanguage("ضریب هوشی شما زیر میانگین است", "fa")
-    } else if (score >= 90 || score <= 110) {
+    } else if (score >= 90 && score <= 110) {
         checkLanguage("your IQ is average", "en")
         checkLanguage("ضریب هوشی شما میانگین است", "fa")
-    } else if (score >= 111 || score <= 120) {
+    } else if (score >= 111 && score <= 120) {
         checkLanguage("your IQ is above average", "en")
         checkLanguage("ضریب هوشی شما بالاتر از میانگین است", "fa")
-    } else if (score >= 121 || score <= 130) {
+    } else if (score >= 121 && score <= 130) {
         checkLanguage("your IQ is high", "en")
         checkLanguage("ضریب هوشی شما بالا است", "fa")
     } else if (score > 130) {
