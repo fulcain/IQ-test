@@ -30,9 +30,8 @@ document.head.appendChild(titleEl)
 // 2: timer box
 // creates container
 bodyEl.innerHTML = `
-    <div id="start-div">
-    <span>start</span>
-    </div>
+<input type="text" id="users-name" placeholder="Your Name:">
+    <button id="start-button" disabled>start</button>
     <nav> 
     <div class="current-question hide"></div>
     <div class="timer-box hide">
@@ -46,9 +45,10 @@ bodyEl.innerHTML = `
 
 // variables after creating elements
 let
-    startBtn = document.querySelector('#start-div'),
+    startBtn = document.querySelector('#start-button'),
     container = document.querySelector('.container'),
     timerBox = document.querySelector('.timer-box'),
+    usersNameInput = document.querySelector('#users-name'),
     currentQuestionEl = document.querySelector('.current-question');
 
 // -----------
@@ -66,14 +66,30 @@ startBtn.addEventListener("click", () => {
     changeDisplay(container)
     changeDisplay(timerBox)
     changeDisplay(currentQuestionEl)
+    changeDisplay(usersNameInput)
     questionBox()
     timer()
     timerInterval = setInterval(timer, 1000)
     answerFunction()
 })
+
+// user name input
+usersNameInput.addEventListener("keydown", () => {
+    checkInput(usersNameInput)
+})
+usersNameInput.addEventListener("blur", () => {
+    checkInput(usersNameInput)
+})
 // functions
 
-
+// TITLE: check input
+function checkInput(input) {
+    if (input.value != '') {
+        startBtn.disabled = false
+    } else {
+        startBtn.disabled = true
+    }
+}
 // TITLE: question box 
 // sets answersFunction variable to empty so the previous answers are not printed
 // if current question is less than 13 calls the answerFunctionTemplate 6 times and puts it in answersFunction
@@ -187,7 +203,7 @@ function endScreen() {
     clearInterval(timerInterval)
     bodyEl.innerHTML = `
     <div class="end-screen">
-        <span>the test is over!</span>
+        <span>${usersNameInput.value}, the test is over!</span>
         <span>correct answers: ${correct}</span>
         <span>wrong answers: ${wrong}</span>
         <span id="final-result"></span>

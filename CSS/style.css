@@ -17,6 +17,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    gap: 10px;
     align-items: center;
     background-color: var(--primary-color);
 
@@ -70,24 +71,42 @@ nav>div {
 /* nav END */
 
 /* start button */
-#start-div {
+#start-button {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     padding: 20px 50px;
     border-radius: 10px;
-    cursor: pointer;
+    /* cursor: pointer; */
     transition: .1s all linear;
+    width: 300px;
+    text-align: center;
+    outline: none;
+    border: none;
 }
-
-#start-div:hover {
+#start-button:disabled{
+    opacity: .1;
+}
+#start-button:not(:disabled):hover {
+    cursor: pointer;
     background-color: var(--primary-color);
     color: var(--secondary-color);
 }
 
-#start-div input {
+/* users-name */
+#users-name {
     border: none;
     outline: none;
+    padding: 20px;
+    background-color: var(--color-1);
+    color: var(--primary-color);
+    font-size: 18px;
+    border-radius: 10px;
+    width: 300px;
 }
+#users-name::placeholder{
+    color: var(--primary-color);
+}
+
 
 /* answer box START */
 
