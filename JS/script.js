@@ -214,7 +214,7 @@ function changeDisplay(el) {
 // TITLE: end screen
 // reassigns notAnswered
 // clears the Interval of timerInterval variable
-// creates end screen inside of the body
+// creates end screen inside of the body by calling endTemplate
 // reloads added items
 // calls IQStatus to calculate the user answers
 // if statement to prevent user from calling the function in Developer Console
@@ -224,21 +224,7 @@ function endScreen() {
     notAnswered = 30 - (correct + wrong)
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
-        bodyEl.innerHTML = `
-        <div class="end-screen" style="direction:rtl;" lang="fa">
-            <div id="translate">
-                <span id="english" class="end-screen-spans-hoverAble">EN</span>
-                <span id="persian" class="end-screen-spans-hoverAble">FA</span>
-            </div>
-            <span>${usersNameInput.value}، تست به پایان رسید</span>
-            <span>جواب های درست: ${correct}</span>
-            <span>جواب های غلط: ${wrong}</span>
-            <span class="end-screen-spans">پاسخ داده نشده: ${notAnswered}</span>
-            <span class="end-screen-spans">امتیاز: ${score}</span>
-            <span id="final-result"></span>
-            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">تست جدید شروع کنید</span>
-        </div>
-        `
+        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید","rtl","fa")
         finalResultEl = document.querySelector('#final-result')
         IQStatus()
     } else {
@@ -258,50 +244,38 @@ function endScreen() {
 // reassiges english and persian element 
 // calls the function it self to do apply the event listerners
 function translate() {
-    english.addEventListener("click", () => {
-        bodyEl.innerHTML = `
-        <div class="end-screen" lang="en">
-        <div id="translate">
-        <span id="english" class="end-screen-spans-hoverAble">EN</span>
-        <span id="persian" class="end-screen-spans-hoverAble">FA</span>
-        </div>
-        <span>${usersNameInput.value}, the test is over!</span>
-        <span>correct answers: ${correct}</span>
-        <span>wrong answers: ${wrong}</span>
-        <span class="end-screen-spans">not answered: ${notAnswered}</span>
-        <span class="end-screen-spans">score: ${score}</span>
-            <span id="final-result"></span>
-            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">take a new test</span>
-            </div>
-            `
-        finalResultEl = document.querySelector('#final-result')
+    persian.addEventListener("click", () => {
+        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید","rtl","fa")
         IQStatus()
-        english = document.querySelector('#english')
-        persian = document.querySelector('#persian')
         translate()
     })
-    persian.addEventListener("click", () => {
-        bodyEl.innerHTML = `
-        <div class="end-screen" style="direction:rtl;" lang="fa">
-            <div id="translate">
-                <span id="english" class="end-screen-spans-hoverAble">EN</span>
-                <span id="persian" class="end-screen-spans-hoverAble">FA</span>
-            </div>
-            <span>${usersNameInput.value}، تست به پایان رسید</span>
-            <span>جواب های درست: ${correct}</span>
-            <span>جواب های غلط: ${wrong}</span>
-            <span class="end-screen-spans">پاسخ داده نشده: ${notAnswered}</span>
-            <span class="end-screen-spans">امتیاز: ${score}</span>
-            <span id="final-result"></span>
-            <span onclick="location.reload()" class="end-screen-spans-hoverAble ">تست جدید شروع کنید</span>
+    english.addEventListener("click", () => {
+        endTempltae("the test is over!", "correct answers", "wrong answers", "not answered", "score", "take a new test","ltr","en")
+        IQStatus()
+        translate()
+    })
+}
+
+// TITLE: endScreen Template
+function endTempltae(testOver, correctText, wrongText, notAnsweredText, scoreText, newTest,direction,languge) {
+    bodyEl.innerHTML = `
+    <div class="end-screen" lang=${languge} style="direction:${direction};">
+    <div id="translate">
+    <span id="english" class="end-screen-spans-hoverAble">EN</span>
+    <span id="persian" class="end-screen-spans-hoverAble">FA</span>
+    </div>
+    <span>${usersNameInput.value}, ${testOver}</span>
+    <span>${correctText}: ${correct}</span>
+    <span>${wrongText}: ${wrong}</span>
+    <span class="end-screen-spans">${notAnsweredText}: ${notAnswered}</span>
+    <span class="end-screen-spans">${scoreText}: ${score}</span>
+        <span id="final-result"></span>
+        <span onclick="location.reload()" class="end-screen-spans-hoverAble ">${newTest}</span>
         </div>
         `
-        finalResultEl = document.querySelector('#final-result')
-        IQStatus()
-        english = document.querySelector('#english')
-        persian = document.querySelector('#persian')
-        translate()
-    })
+    finalResultEl = document.querySelector('#final-result')
+    english = document.querySelector('#english')
+    persian = document.querySelector('#persian')
 }
 
 // TITLE: IQStatus
