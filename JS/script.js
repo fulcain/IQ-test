@@ -33,6 +33,7 @@ document.head.appendChild(titleEl)
 // 2: timer box
 // creates container
 bodyEl.innerHTML = `
+<input type="text" id="users-age" placeholder="Enter Your Age:">
 <input type="text" id="users-name" placeholder="Enter Your Name:">
     <button id="start-button" disabled>START</button>
     <nav> 
@@ -52,6 +53,7 @@ let
     container = document.querySelector('.container'),
     timerBox = document.querySelector('.timer-box'),
     usersNameInput = document.querySelector('#users-name'),
+    userAgeInput = document.querySelector('#users-age')
     currentQuestionEl = document.querySelector('.current-question');
 
 // -----------
@@ -213,7 +215,7 @@ function changeDisplay(el) {
 // if statement to prevent user from calling the function in Developer Console
 // calls translate function
 function endScreen() {
-    score = Math.floor((correct / 19) * 100)
+    score = Math.floor((correct / userAgeInput) * 100)
     notAnswered = 30 - (correct + wrong)
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
@@ -284,7 +286,7 @@ function IQStatus() {
         checkLanguage("ضریب هوشی شما زیر میانگین است", "fa")
     } else if (score >= 90 && score <= 110) {
         checkLanguage("your IQ is average", "en")
-        checkLanguage("ضریب هوشی شما میانگین است", "fa")
+        checkLanguage("ضریب هوشی شما متوسط است", "fa")
     } else if (score >= 111 && score <= 120) {
         checkLanguage("your IQ is above average", "en")
         checkLanguage("ضریب هوشی شما بالاتر از میانگین است", "fa")
