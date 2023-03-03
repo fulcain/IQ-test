@@ -11,7 +11,6 @@ let
     wrong = 0,
     notAnswered = 0,
     validate = 0,
-    score = 0,
     minutes = 14,
     seconds = 60,
     persian = "",
@@ -34,8 +33,7 @@ document.head.appendChild(titleEl)
 // 2: timer box
 // creates container
 bodyEl.innerHTML = `
-<input type="number" id="users-age" placeholder="Enter Your Age:" class="start-style inputs">
-<input type="text" id="users-name" placeholder="Enter Your Name:" class="start-style inputs">
+<input type="text" id="name"placeholder="Enter Your Name:" class="start-style inputs">
     <button id="start-button" class="start-style">START</button>
     <nav> 
     <div class="current-question hide"></div>
@@ -53,15 +51,12 @@ let
     startBtn = document.querySelector('#start-button'),
     container = document.querySelector('.container'),
     timerBox = document.querySelector('.timer-box'),
-    usersNameInput = document.querySelector('#users-name'),
-    userAgeInput = document.querySelector('#users-age'),
-    allInputs = document.querySelectorAll(".inputs"),
+    usersNameInput = document.querySelector('#name'),
     currentQuestionEl = document.querySelector('.current-question');
 
 // -----------
 
 // events
-// start button
 
 startBtn.addEventListener("click", () => {
     startFunction()
@@ -72,6 +67,8 @@ document.addEventListener("keypress", (e) => {
     }
 })
 
+// functions
+
 // TITLE: start function
 // calls changeDisplay function to hide the button
 // calls questionBox function to create the first question
@@ -79,20 +76,19 @@ document.addEventListener("keypress", (e) => {
 // sets an Interval for timer function and stores it in timerInterval variable
 // calls answer function
 function startFunction() {
-    if (userAgeInput.value != "" && usersNameInput.value != "") {
+    if (usersNameInput.value != "") {
         currentQuestion++
         changeDisplay(startBtn)
         changeDisplay(container)
         changeDisplay(timerBox)
         changeDisplay(currentQuestionEl)
         changeDisplay(usersNameInput)
-        changeDisplay(userAgeInput)
         questionBox()
         timer()
         timerInterval = setInterval(timer, 1000)
         answerFunction()
     } else {
-        alert("enter both values")
+        alert("enter a value")
     }
 }
 
@@ -140,10 +136,11 @@ function questionBox() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
 }
 
+
 // TITLE: answers function
 function answerFunctionTemplate(number) {
     return `
-    <div div class="each-answer-box" >
+    <div div class="each-answer-box">
         <img src="Images/${currentQuestion}/${currentQuestion}-${number}.png">
     </div>
     `
@@ -202,12 +199,10 @@ function changeDisplay(el) {
 // if statement to prevent user from calling the function in Developer Console
 // calls translate function
 function endScreen() {
-    score = Math.floor((correct / userAgeInput.value) * 100)
     notAnswered = 30 - (correct + wrong)
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
-        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید", "rtl", "fa", "،")
-        finalResultEl = document.querySelector('#final-result')
+        endTemplate("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "تست جدید شروع کنید", "rtl", "fa", "،")
         IQStatus()
     } else {
         alert("please enter a name")
@@ -219,29 +214,30 @@ function endScreen() {
     translate()
 }
 
+
 // TITLE: translate
-// changes body inner HTML acoring to language
+// changes body inner HTML according to language
 // reassigns finalResultEl 
 // calls IQstatus 
-// reassiges english and persian element 
-// calls the function it self to do apply the event listerners
+// re-assign english and persian element 
+// calls the function it self to do apply the event listeners
 function translate() {
     persian.addEventListener("click", () => {
-        endTempltae("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "امتیاز", "تست جدید شروع کنید", "rtl", "fa", "،")
+        endTemplate("تست به پایان رسید", "جواب های درست", "جواب های غلط", "پاسخ داده نشده", "تست جدید شروع کنید", "rtl", "fa", "،")
         IQStatus()
         translate()
     })
     english.addEventListener("click", () => {
-        endTempltae("the test is over!", "correct answers", "wrong answers", "not answered", "score", "take a new test", "ltr", "en", ",")
+        endTemplate("the test is over!", "correct answers", "wrong answers", "not answered", "take a new test", "ltr", "en", ",")
         IQStatus()
         translate()
     })
 }
 
 // TITLE: endScreen Template
-function endTempltae(testOver, correctText, wrongText, notAnsweredText, scoreText, newTest, direction, languge, comma) {
+function endTemplate(testOver, correctText, wrongText, notAnsweredText, newTest, direction, language, comma) {
     bodyEl.innerHTML = `
-    <div class="end-screen" lang=${languge} style="direction:${direction};">
+    <div class="end-screen" lang=${language} style="direction:${direction};">
     <div id="translate">
     <span id="english" class="end-screen-spans-hoverAble">EN</span>
     <span id="persian" class="end-screen-spans-hoverAble">FA</span>
@@ -250,45 +246,34 @@ function endTempltae(testOver, correctText, wrongText, notAnsweredText, scoreTex
     <span>${correctText} = ${correct}</span>
     <span>${wrongText} = ${wrong}</span>
     <span class="end-screen-spans">${notAnsweredText} = ${notAnswered}</span>
-    <span class="end-screen-spans">${scoreText} = ${score}</span>
-        <span id="final-result"></span>
-        <span onclick="location.reload()" class="end-screen-spans-hoverAble ">${newTest}</span>
-        </div>
-        `
+    <span id="final-result"></span>
+    <span onclick="location.reload()" class="end-screen-spans-hoverAble">${newTest}</span>
+    </div>
+    `
     finalResultEl = document.querySelector('#final-result')
     english = document.querySelector('#english')
     persian = document.querySelector('#persian')
 }
 
 // TITLE: IQStatus
-
 // changes finalResultEl innerHTML according to user results of the test
 // calls checkLanguage function
 function IQStatus() {
-    if (score >= 70 || score <= 79) {
-        checkLanguage("your IQ is the lowest level (Cognitively impaired)", "en")
-        checkLanguage("ضریب هوشی شما پاییت ترین حالت ممکن است", "fa")
-    } else if (score >= 80 || score <= 89) {
-        checkLanguage("your IQ is below average", "en")
-        checkLanguage("ضریب هوشی شما زیر میانگین است", "fa")
-    } else if (score >= 90 || score <= 110) {
-        checkLanguage("your IQ is average", "en")
-        checkLanguage("ضریب هوشی شما متوسط است", "fa")
-    } else if (score >= 111 || score <= 120) {
-        checkLanguage("your IQ is above average", "en")
-        checkLanguage("ضریب هوشی شما بالاتر از میانگین است", "fa")
-    } else if (score >= 121 || score <= 130) {
-        checkLanguage("your IQ is high", "en")
-        checkLanguage("ضریب هوشی شما بالا است", "fa")
-    } else if (score > 130) {
-        finalResultEl.innerHTML = "your IQ is SUPER high!"
-        checkLanguage("your IQ is SUPER high!", "en")
-        checkLanguage("ضریب هوشی شما بسیار بالا است", "fa")
+    if (correct >= 25) {
+        checkLanguage("Your IQ is SUPER high!", "ضریب هوشی شما بسیار بالا است")
+    } else if (correct >= 15) {
+        checkLanguage("Your IQ is average", "ضریب هوشی شما متوسط است")
+    } else if (correct <= 15) {
+        checkLanguage("Your IQ is the lowest level (Cognitively impaired)", "ضریب هوشی شما پاییت ترین حالت ممکن است")
+
     }
     // TITLE: check language
-    function checkLanguage(message, language) {
-        if (finalResultEl.parentElement.getAttribute("lang") == language) {
-            finalResultEl.innerHTML = message
+    function checkLanguage(enMessage, faMessage) {
+        finalResultEl.innerHTML = document.querySelector('#final-result')
+        if (finalResultEl.parentElement.getAttribute("lang") == "en") {
+            finalResultEl.innerHTML = enMessage
+        } else if (finalResultEl.parentElement.getAttribute("lang") == "fa") {
+            finalResultEl.innerHTML = faMessage
         }
     }
 }

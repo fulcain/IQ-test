@@ -73,12 +73,11 @@ nav>div {
 .start-style {
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    padding: 20px 50px;
+    padding: 20px;
     border-radius: 10px;
     transition: .2s all linear;
     width: 300px;
     height: 50px;
-    text-align: center;
     outline: none;
     border: none;
     font-size: 13px;
@@ -88,25 +87,17 @@ nav>div {
 .start-style::placeholder {
     color: var(--primary-color);
 }
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
 
 /* start button */
 #start-button{
-    cursor: pointer;
     text-align: center;
 }
+#start-button:disabled{
+    opacity: .1;
+}
 
-#start-button:hover {
+
+#start-button:not(:disabled):hover {
     cursor: pointer;
     background-color: var(--primary-color);
     color: var(--secondary-color);
