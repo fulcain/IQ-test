@@ -84,6 +84,7 @@ function startFunction() {
         changeDisplay(timerBox)
         changeDisplay(currentQuestionEl)
         changeDisplay(usersNameInput)
+        changeDisplay(userAgeInput)
         questionBox()
         timer()
         timerInterval = setInterval(timer, 1000)
