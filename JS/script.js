@@ -17,6 +17,13 @@ let
 
 // -----------
 // creating HTML
+
+// icon
+let titleEl = document.createElement("link")
+titleEl.setAttribute("rel", "icon")
+titleEl.setAttribute("href", "Images/icon.ico")
+document.head.appendChild(titleEl)
+
 // creates start div
 // creates nav -> 2 div in it:
 // 1: current question
