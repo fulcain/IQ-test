@@ -82,9 +82,11 @@ nav>div {
     outline: none;
     border: none;
 }
-#start-button:disabled{
+
+#start-button:disabled {
     opacity: .1;
 }
+
 #start-button:not(:disabled):hover {
     cursor: pointer;
     background-color: var(--primary-color);
@@ -102,7 +104,8 @@ nav>div {
     border-radius: 10px;
     width: 300px;
 }
-#users-name::placeholder{
+
+#users-name::placeholder {
     color: var(--primary-color);
 }
 
@@ -173,6 +176,7 @@ nav>div {
     background-color: red;
     color: var(--text-color);
 }
+
 .end-screen>span:nth-child(4) {
     background-color: var(--primary-color);
     color: var(--text-color);
@@ -224,11 +228,15 @@ nav>div {
     }
 
     .whole-question-box img {
-        width: 350px;
+        width: 300px;
+    }
+
+    .whole-answer-box {
+        margin-top: 30px;
     }
 
     .each-answer-box img {
-        width: 90px;
+        width: 80px;
     }
 }
 
@@ -259,6 +267,7 @@ nav>div {
         width: 500px;
         height: 400px;
     }
+
     .each-answer-box img {
         width: 70px;
     }
