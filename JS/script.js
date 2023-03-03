@@ -149,13 +149,6 @@ function questionBox() {
     minutesEl = document.querySelector('#minutes')
     secondsEl = document.querySelector('#seconds')
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
-
-    // changes the style if answers are 2 rows
-    if (currentQuestion > 12) {
-        wholeQuestionBox.forEach(item => {
-            item.style.minHeight = "600px"
-        })
-    }
 }
 
 // TITLE: answers function
