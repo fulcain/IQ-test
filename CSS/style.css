@@ -70,42 +70,46 @@ nav>div {
 /* nav END */
 
 /* start button */
-.inputs{
+.start-style {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     padding: 20px 50px;
     border-radius: 10px;
     transition: .2s all linear;
     width: 300px;
+    height: 50px;
     text-align: center;
     outline: none;
     border: none;
+    font-size: 13px;
+    text-align: left;
 }
 
-#start-button:disabled {
-    opacity: .1;
+.start-style::placeholder {
+    color: var(--primary-color);
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-#start-button:not(:disabled):hover {
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* start button */
+#start-button{
+    cursor: pointer;
+    text-align: center;
+}
+
+#start-button:hover {
     cursor: pointer;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-}
-
-/* users-name */
-#users-name {
-    border: none;
-    outline: none;
-    padding: 20px;
-    background-color: var(--color-1);
-    color: var(--primary-color);
-    font-size: 18px;
-    border-radius: 10px;
-    width: 300px;
-}
-
-#users-name::placeholder {
-    color: var(--primary-color);
 }
 
 
@@ -313,7 +317,7 @@ nav>div {
     nav {
         width: 200px;
     }
-    
+
     .end-screen {
         width: 350px;
     }
