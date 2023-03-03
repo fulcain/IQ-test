@@ -268,6 +268,8 @@ function IQStatus() {
 
     }
     // TITLE: check language
+    // if lang is en = message will go to enMessage parameter
+    // if lang is fa = message will go to faMessage parameter
     function checkLanguage(enMessage, faMessage) {
         finalResultEl.innerHTML = document.querySelector('#final-result')
         if (finalResultEl.parentElement.getAttribute("lang") == "en") {
