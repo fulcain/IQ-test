@@ -10,6 +10,7 @@ let
     currentQuestion = 0,
     correct = 0,
     wrong = 0,
+    notAnswered = 0,
     minutes = 14,
     seconds = 60,
     answersFunction = "",
@@ -31,7 +32,7 @@ document.head.appendChild(titleEl)
 // creates container
 bodyEl.innerHTML = `
 <input type="text" id="users-name" placeholder="Enter Your Name:">
-    <button id="start-button" disabled>start</button>
+    <button id="start-button" disabled>START</button>
     <nav> 
     <div class="current-question hide"></div>
     <div class="timer-box hide">
@@ -201,7 +202,7 @@ function changeDisplay(el) {
 // calls IQStatus to calculate the user answers
 // if statement to prevent user from calling the function in Developer Console
 function endScreen() {
-
+    notAnswered = 30 - (correct + wrong)
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
         bodyEl.innerHTML = `
@@ -209,14 +210,14 @@ function endScreen() {
             <span>${usersNameInput.value}, the test is over!</span>
             <span>CORRECT ANSWERS: ${correct}</span>
             <span>WRONG ANSWERS: ${wrong}</span>
-            <span>NOT ANSWERED: ${30 - (correct + wrong)}</span>
+            <span>NOT ANSWERED: ${notAnswered}</span>
             <span id="final-result"></span>
             <button onclick="location.reload()">take a new test</button>
         </div>
         `
         finalResultEl = document.querySelector('#final-result')
         IQStatus()
-    } else{
+    } else {
         alert("please enter a name")
     }
 }
@@ -224,6 +225,7 @@ function endScreen() {
 // TITLE: IQStatus
 // changes finalResultEl innerHTML according to user results of the test
 function IQStatus() {
+
     if (correct > 25) {
         finalResultEl.innerHTML = "your IQ is super high"
     } else if (correct > 20 && correct < 25) {
@@ -237,6 +239,8 @@ function IQStatus() {
     } else if (correct < 10) {
         finalResultEl.innerHTML = "your IQ is below average"
     }
+
+
 }
 
 // TITLE: correctAnswers
