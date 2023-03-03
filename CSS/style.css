@@ -70,7 +70,7 @@ nav>div {
 /* nav END */
 
 /* start button */
-input{
+.inputs{
     background-color: var(--secondary-color);
     color: var(--primary-color);
     padding: 20px 50px;
