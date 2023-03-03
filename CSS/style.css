@@ -257,6 +257,10 @@ nav>div {
 @media only screen and (max-width:540px) {
     .container {
         width: 500px;
+        height: 400px;
+    }
+    .each-answer-box img {
+        width: 70px;
     }
 }
 

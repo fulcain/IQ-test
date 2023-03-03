@@ -11,6 +11,7 @@ let
     correct = 0,
     wrong = 0,
     notAnswered = 0,
+    score = 0,
     minutes = 14,
     seconds = 60,
     answersFunction = "",
@@ -196,12 +197,14 @@ function changeDisplay(el) {
 }
 
 // TITLE: end screen
+// reassigns notAnswered
 // clears the Interval of timerInterval variable
 // creates end screen inside of the body
 // reloads added items
 // calls IQStatus to calculate the user answers
 // if statement to prevent user from calling the function in Developer Console
 function endScreen() {
+    score = (correct / 20) * 100
     notAnswered = 30 - (correct + wrong)
     if (usersNameInput.value != "") {
         clearInterval(timerInterval)
@@ -211,6 +214,7 @@ function endScreen() {
             <span>CORRECT ANSWERS: ${correct}</span>
             <span>WRONG ANSWERS: ${wrong}</span>
             <span>NOT ANSWERED: ${notAnswered}</span>
+            <span>SCORE : ${score}</span>
             <span id="final-result"></span>
             <button onclick="location.reload()">take a new test</button>
         </div>
@@ -223,23 +227,25 @@ function endScreen() {
 }
 
 // TITLE: IQStatus
+
 // changes finalResultEl innerHTML according to user results of the test
 function IQStatus() {
-
-    if (correct > 25) {
-        finalResultEl.innerHTML = "your IQ is super high"
-    } else if (correct > 20 && correct < 25) {
-        finalResultEl.innerHTML = "your IQ is high"
+    if (score >= 70 || score <= 79) {
+        finalResultEl.innerHTML = "your IQ is the lowest level (Cognitively impaired)"
     }
-    else if (correct > 15 && correct < 20) {
-        finalResultEl.innerHTML = "your IQ is above average"
-    }
-    else if (correct > 10 && correct < 15) {
-        finalResultEl.innerHTML = "your IQ is average"
-    } else if (correct < 10) {
+    else if (score >= 80 || score <= 89) {
         finalResultEl.innerHTML = "your IQ is below average"
     }
-
+    else if (score >= 90 || score <= 110) {
+        finalResultEl.innerHTML = "your IQ is average)"
+    }
+    else if (score >= 111 || score <= 120) {
+        finalResultEl.innerHTML = "your IQ is above average"
+    } else if (score >= 121 || score <= 130) {
+        finalResultEl.innerHTML = "your IQ is high"
+    } else if (score > 130){
+        finalResultEl.innerHTML = "your IQ is SUPER high!"
+    }
 
 }
 
