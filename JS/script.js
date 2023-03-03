@@ -199,20 +199,26 @@ function changeDisplay(el) {
 // creates end screen inside of the body
 // reloads added items
 // calls IQStatus to calculate the user answers
+// if statement to prevent user from calling the function in Developer Console
 function endScreen() {
-    clearInterval(timerInterval)
-    bodyEl.innerHTML = `
-    <div class="end-screen">
-        <span>${usersNameInput.value}, the test is over!</span>
-        <span>correct answers: ${correct}</span>
-        <span>wrong answers: ${wrong}</span>
-        <span>not answered: ${30 - (correct + wrong)}</span>
-        <span id="final-result"></span>
-        <button onclick="location.reload()">take a new test</button>
-    </div>
-    `
-    finalResultEl = document.querySelector('#final-result')
-    IQStatus()
+
+    if (usersNameInput.value != "") {
+        clearInterval(timerInterval)
+        bodyEl.innerHTML = `
+        <div class="end-screen">
+            <span>${usersNameInput.value}, the test is over!</span>
+            <span>CORRECT ANSWERS: ${correct}</span>
+            <span>WRONG ANSWERS: ${wrong}</span>
+            <span>NOT ANSWERED: ${30 - (correct + wrong)}</span>
+            <span id="final-result"></span>
+            <button onclick="location.reload()">take a new test</button>
+        </div>
+        `
+        finalResultEl = document.querySelector('#final-result')
+        IQStatus()
+    } else{
+        alert("please enter a name")
+    }
 }
 
 // TITLE: IQStatus
