@@ -33,8 +33,8 @@ document.head.appendChild(titleEl)
 // 2: timer box
 // creates container
 bodyEl.innerHTML = `
-<input type="text" id="users-age" placeholder="Enter Your Age:">
-<input type="text" id="users-name" placeholder="Enter Your Name:">
+<input type="text" id="users-age" placeholder="Enter Your Age:" class="inputs">
+<input type="text" id="users-name" placeholder="Enter Your Name:" class="inputs">
     <button id="start-button" disabled>START</button>
     <nav> 
     <div class="current-question hide"></div>
