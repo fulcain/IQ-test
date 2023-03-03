@@ -58,24 +58,38 @@ let
 
 // events
 // start button
+
+startBtn.addEventListener("click", () => {
+    startFunction()
+})
+document.addEventListener("keypress", (e) => {
+    if (e.key == "Enter") {
+        startFunction()
+    }
+})
+
+// TITLE: start function
 // calls changeDisplay function to hide the button
 // calls questionBox function to create the first question
 // calls timer function
 // sets an Interval for timer function and stores it in timerInterval variable
 // calls answer function
-startBtn.addEventListener("click", () => {
-    currentQuestion++
-    changeDisplay(startBtn)
-    changeDisplay(container)
-    changeDisplay(timerBox)
-    changeDisplay(currentQuestionEl)
-    changeDisplay(usersNameInput)
-    questionBox()
-    timer()
-    timerInterval = setInterval(timer, 1000)
-    answerFunction()
-})
-
+function startFunction() {
+    if (usersNameInput.value != 0) {
+        currentQuestion++
+        changeDisplay(startBtn)
+        changeDisplay(container)
+        changeDisplay(timerBox)
+        changeDisplay(currentQuestionEl)
+        changeDisplay(usersNameInput)
+        questionBox()
+        timer()
+        timerInterval = setInterval(timer, 1000)
+        answerFunction()
+    } else {
+        alert("enter your name please!")
+    }
+}
 // user name input
 usersNameInput.addEventListener("keydown", () => {
     checkInput(usersNameInput)
