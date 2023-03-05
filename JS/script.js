@@ -15,6 +15,7 @@ let
     seconds = 60,
     persian = "",
     english = "",
+    width = 0,
     answersFunction = "",
     timerInterval;
 
@@ -36,14 +37,21 @@ bodyEl.innerHTML = `
 <input type="text" id="name"placeholder="Enter Your Name:" class="start-style inputs">
     <button id="start-button" class="start-style">START</button>
     <nav> 
-    <div class="current-question hide"></div>
-    <div class="timer-box hide">
+    <div id="timer-current-question" class="hide">
+    <div class="current-question"></div>
+    
+    <div class="timer-box">
         <span id="minutes"></span>
         <span>:</span>
         <span id="seconds"></span>
     </div>
+    </div>
     </nav>  
     <div class="container hide"></div>
+    
+    <div id="box" class="hide">
+    <div id="progress-bar"> </div>
+    </div>  
 `
 
 // variables after creating elements
@@ -52,7 +60,10 @@ let
     container = document.querySelector('.container'),
     timerBox = document.querySelector('.timer-box'),
     usersNameInput = document.querySelector('#name'),
-    currentQuestionEl = document.querySelector('.current-question');
+    currentQuestionEl = document.querySelector('.current-question'),
+    timerAndCurrentEl = document.querySelector('#timer-current-question'),
+    progressBar = document.querySelector('#progress-bar'),
+    progressBox = document.querySelector('#box');
 
 // -----------
 
@@ -80,9 +91,9 @@ function startFunction() {
         currentQuestion++
         changeDisplay(startBtn)
         changeDisplay(container)
-        changeDisplay(timerBox)
-        changeDisplay(currentQuestionEl)
         changeDisplay(usersNameInput)
+        changeDisplay(timerAndCurrentEl)
+        changeDisplay(progressBox)
         questionBox()
         timer()
         timerInterval = setInterval(timer, 1000)
@@ -136,7 +147,11 @@ function questionBox() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
 }
 
-
+// TITLE: addWidth
+function addWidth() {
+    width += 1.7
+    progressBar.style.width = width + "%"
+}
 // TITLE: answers function
 function answerFunctionTemplate(number) {
     return `
@@ -150,6 +165,7 @@ function answerFunctionTemplate(number) {
 // changes the currentQuestionEL innerHTML after called
 function currentQuestionFunction() {
     if (currentQuestion < 31) {
+        addWidth()
         currentQuestionEl.innerHTML = `${currentQuestion}/30`
     }
 }
