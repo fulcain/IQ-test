@@ -86,7 +86,7 @@ nav>div:first-of-type>div {
     color: var(--primary-color);
     padding: 10px;
     border-radius: 10px;
-    width: 70px;
+    width: 90px;
 }
 
 #timer-current-question {
