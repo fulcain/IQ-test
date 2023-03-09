@@ -5,7 +5,7 @@
 - you will get a result based on correct questions
 
 # Installation
-- if you can't use https://fulcain.github.io/IQ-test
+- if you can't use [IQ-test github page](https://fulcain.github.io/IQ-test)
 
 - click on code and download zip
 - open the index.html file
