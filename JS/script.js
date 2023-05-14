@@ -17,7 +17,9 @@ let
     english = "",
     width = 0,
     answersFunction = "",
-    timerInterval;
+    timerInterval,
+    correctAnswersArray = [2, 0, 4, 4, 1, 0, 1, 1, 1, 5, 3, 0, 3, 6, 1, 2, 0, 5, 4, 7, 3, 3, 6, 5, 3, 6, 6, 2, 1, 7]
+    ;
 
 // -----------
 // creating HTML
@@ -113,20 +115,21 @@ function startFunction() {
 // reloads added items
 // if currentQuestion is more than 12 (13 to 30) the question box min-height will change to 600px
 function questionBox() {
-    answersFunction = ""
-    // answers function
-    if (currentQuestion < 13) {
-        for (let i = 1; i < 7; i++) {
-            answersFunction += answerFunctionTemplate(i)
+    if (currentQuestion <= 30) {
+        answersFunction = ""
+        // answers function
+        if (currentQuestion < 13) {
+            for (let i = 1; i < 7; i++) {
+                answersFunction += answerFunctionTemplate(i)
+            }
+        } else if (currentQuestion <= 30 && currentQuestion >= 13) {
+            for (let i = 1; i < 9; i++) {
+                answersFunction += answerFunctionTemplate(i)
+            }
         }
-    } else {
-        for (let i = 1; i < 9; i++) {
-            answersFunction += answerFunctionTemplate(i)
-        }
-    }
 
-    currentQuestionFunction()
-    container.innerHTML = `
+        currentQuestionFunction()
+        container.innerHTML = `
             <div class="whole-question-box">
                 <!-- question box -->
                 <div class="question-box">
@@ -138,13 +141,14 @@ function questionBox() {
                 </div >
                 </div>
     `
-    correctAnswers()
-    // selectors
-    eachAnswerBox = document.querySelectorAll('.each-answer-box')
-    timerBox = document.querySelector('.timer-box')
-    minutesEl = document.querySelector('#minutes')
-    secondsEl = document.querySelector('#seconds')
-    wholeQuestionBox = document.querySelectorAll('.whole-question-box')
+        correctAnswers()
+        // selectors
+        eachAnswerBox = document.querySelectorAll('.each-answer-box')
+        timerBox = document.querySelector('.timer-box')
+        minutesEl = document.querySelector('#minutes')
+        secondsEl = document.querySelector('#seconds')
+        wholeQuestionBox = document.querySelectorAll('.whole-question-box')
+    }
 }
 
 // TITLE: addWidth
@@ -164,10 +168,8 @@ function answerFunctionTemplate(number) {
 // TITLE: current question
 // changes the currentQuestionEL innerHTML after called
 function currentQuestionFunction() {
-    if (currentQuestion < 31) {
         addWidth()
         currentQuestionEl.innerHTML = `${currentQuestion}/30`
-    }
 }
 
 // TITLE: answer function
@@ -299,12 +301,11 @@ function IQStatus() {
 // TITLE: correctAnswers
 // gives correct answers "correct" class
 // calls correctAnswersPath function
-let correctAnswersArray = [2, 0, 4, 4, 1, 0, 1, 1, 1, 5, 3, 0, 3, 6, 1, 2, 0, 5, 4, 7, 3, 3, 6, 5, 3, 6, 6, 2, 1, 7]
 function correctAnswers() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
     // for loop for giving correct answers "correct" className
     for (let i = 0; i < correctAnswersArray.length; i++) {
-        if (currentQuestion == i+1) {
+        if (currentQuestion == i + 1) {
             wholeQuestionBox[0].children[1].children[correctAnswersArray[i]].classList.add("correct")
         }
     }
