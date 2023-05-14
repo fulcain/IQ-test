@@ -18,8 +18,7 @@ let
     width = 0,
     answersFunction = "",
     timerInterval,
-    correctAnswersArray = [2, 0, 4, 4, 1, 0, 1, 1, 1, 5, 3, 0, 3, 6, 1, 2, 0, 5, 4, 7, 3, 3, 6, 5, 3, 6, 6, 2, 1, 7]
-    ;
+    correctAnswersArray = [2, 0, 4, 4, 1, 0, 1, 1, 1, 5, 3, 0, 3, 6, 1, 2, 0, 5, 4, 7, 3, 3, 6, 5, 3, 6, 6, 2, 1, 7];
 
 // -----------
 // creating HTML
@@ -168,8 +167,8 @@ function answerFunctionTemplate(number) {
 // TITLE: current question
 // changes the currentQuestionEL innerHTML after called
 function currentQuestionFunction() {
-        addWidth()
-        currentQuestionEl.innerHTML = `${currentQuestion}/30`
+    addWidth()
+    currentQuestionEl.innerHTML = `${currentQuestion}/30`
 }
 
 // TITLE: answer function
@@ -283,7 +282,6 @@ function IQStatus() {
         checkLanguage("Your IQ is average", "ضریب هوشی شما متوسط است")
     } else if (correct <= 15) {
         checkLanguage("Your IQ is the lowest level (Cognitively impaired)", "ضریب هوشی شما پاییت ترین حالت ممکن است")
-
     }
     // TITLE: check language
     // if lang is en = message will go to enMessage parameter
@@ -304,11 +302,7 @@ function IQStatus() {
 function correctAnswers() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
     // for loop for giving correct answers "correct" className
-    for (let i = 0; i < correctAnswersArray.length; i++) {
-        if (currentQuestion == i + 1) {
-            wholeQuestionBox[0].children[1].children[correctAnswersArray[i]].classList.add("correct")
-        }
-    }
+    wholeQuestionBox[0].children[1].children[correctAnswersArray[currentQuestion - 1]].classList.add("correct")
 }
 
 
