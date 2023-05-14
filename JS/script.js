@@ -299,80 +299,17 @@ function IQStatus() {
 // TITLE: correctAnswers
 // gives correct answers "correct" class
 // calls correctAnswersPath function
+let correctAnswersArray = [2, 0, 4, 4, 1, 0, 1, 1, 1, 5, 3, 0, 3, 6, 1, 2, 0, 5, 4, 7, 3, 3, 6, 5, 3, 6, 6, 2, 1, 7]
 function correctAnswers() {
     wholeQuestionBox = document.querySelectorAll('.whole-question-box')
-
-    // question 1
-    correctAnswersPath(2, 1)
-    // question 2
-    correctAnswersPath(0, 2)
-    // question 3
-    correctAnswersPath(4, 3)
-    // question 4
-    correctAnswersPath(4, 4)
-    // question 5
-    correctAnswersPath(1, 5)
-    // question 6
-    correctAnswersPath(0, 6)
-    // question 7
-    correctAnswersPath(1, 7)
-    // question 8
-    correctAnswersPath(1, 8)
-    // question 9
-    correctAnswersPath(1, 9)
-    // question 10
-    correctAnswersPath(5, 10)
-    // question 11
-    correctAnswersPath(3, 11)
-    // question 12
-    correctAnswersPath(0, 12)
-    // question 13
-    correctAnswersPath(3, 13)
-    // question 14
-    correctAnswersPath(6, 14)
-    // question 15
-    correctAnswersPath(1, 15)
-    // question 16
-    correctAnswersPath(2, 16)
-    // question 17
-    correctAnswersPath(0, 17)
-    // question 18
-    correctAnswersPath(5, 18)
-    // question 19
-    correctAnswersPath(4, 19)
-    // question 20
-    correctAnswersPath(7, 20)
-    // question 21
-    correctAnswersPath(3, 21)
-    // question 22
-    correctAnswersPath(3, 22)
-    // question 23
-    correctAnswersPath(6, 23)
-    // question 24
-    correctAnswersPath(5, 24)
-    // question 25
-    correctAnswersPath(3, 25)
-    // question 26
-    correctAnswersPath(6, 26)
-    // question 27
-    correctAnswersPath(6, 27)
-    // question 28
-    correctAnswersPath(2, 28)
-    // question 29
-    correctAnswersPath(1, 29)
-    // question 30
-    correctAnswersPath(7, 30)
-}
-
-// TITLE: correctAnswersPath
-// parameter:
-// correct: number of child element which is correct
-// questionNumber: the question number
-function correctAnswersPath(correct, questionNumber) {
-    if (currentQuestion == questionNumber) {
-        wholeQuestionBox[0].children[1].children[correct].classList.add("correct")
+    // for loop for giving correct answers "correct" className
+    for (let i = 0; i < correctAnswersArray.length; i++) {
+        if (currentQuestion == i+1) {
+            wholeQuestionBox[0].children[1].children[correctAnswersArray[i]].classList.add("correct")
+        }
     }
 }
+
 
 // TITLE: timer
 // calls addZeroMinutes and addZeroToSeconds
